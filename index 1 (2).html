@@ -1,0 +1,1254 @@
+  <!DOCTYPE html>
+  <html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doce Alvo🎯</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <style>
+          :root {
+        --rosa-principal: #e91e63;
+        --rosa-claro: #ff4081;
+        --rosa-fundo: #fff0f5;
+        --cinza-texto: #333;
+      }
+  
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+  
+      body {
+        font-family: 'Poppins', sans-serif;
+        background: #f8f1f5;
+        color: var(--cinza-texto);
+        line-height: 1.6;
+      }
+  
+  
+  header {
+    background: url("https://i.postimg.cc/1zCXVvLk/108647f84-09b4-4176-b645-8feae8ff7ef6.png") center/cover no-repeat;
+    padding: 18px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    box-shadow: 0 4px 15px rgba(233, 30, 99, 0.15);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  
+      header img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        border: 4px solid white;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        object-fit: cover;
+        background-color: #AB191B;
+      }
+  
+      header h1 {
+        font-size: 26px;
+        font-weight: 700;
+        color: var(--rosa-principal);
+        margin: 0;
+        letter-spacing: -0.5px;
+      }
+  
+  #categorias {  
+    display: flex;  
+    gap: 14px;  
+    overflow-x: auto;  
+    padding: 20px 15px 15px;  
+    scroll-behavior: smooth;  
+    background: white;  
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);  
+  }  
+  
+  #categorias::-webkit-scrollbar { 
+    display: none; 
+  }  
+  
+  .categoria {  
+    flex: 0 0 25%;
+    min-width: 0;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+  }  
+  
+  .categoria:hover {  
+    transform: translateY(-6px);  
+  }  
+  
+  .categoria img {  
+    width: 100%;  
+    aspect-ratio: 1 / 1;
+    object-fit: cover;  
+    border-radius: 18px;  
+    box-shadow: 0 5px 15px rgba(233, 30, 99, 0.2);  
+    transition: all 0.3s ease;  
+  }  
+  
+  .categoria:hover img {  
+    transform: scale(1.05);  
+  }
+  
+  .categoria p {  
+    margin-top: 8px;  
+    font-weight: 600;  
+    color: var(--rosa-principal);  
+    font-size: 14.5px;  
+  }
+  @media (max-width: 480px) {
+    .categoria {
+      flex: 0 0 40%;
+    }
+  }
+  
+  #produtos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(165px, 1fr));
+    gap: 18px;
+    padding: 20px 15px;
+    
+    background:
+      linear-gradient(rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.92)),
+      url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvx4YEJZQPFdbpQwwOgYlQkRwsAkbxLX8oFuKExomtqQ&s=10") center/cover no-repeat;
+  }
+  
+      .produto {
+        background: white;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+        transition: all 0.3s ease;
+      }
+  
+      .produto:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(233, 30, 99, 0.15);
+      }
+  
+  .produto img {
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+    background: #fff;
+  }
+  
+      .produto-info {
+        padding: 14px 14px 16px;
+      }
+  
+      .produto h5 {
+        font-size: 15.5px;
+        font-weight: 600;
+        margin-bottom: 4px;
+        color: #222;
+      }
+  
+      .produto h6 {
+        font-size: 13px;
+        color: #777;
+        margin-bottom: 8px;
+        font-weight: 400;
+      }
+  
+      .produto h3 {
+        font-size: 18px;
+        color: var(--rosa-principal);
+        font-weight: 700;
+      }
+  
+      #modalInfo {
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: rgba(0, 0, 0, 0.65);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+        animation: fadeIn 0.3s ease;
+      }
+  
+      .modal-content {
+        background: white;
+        width: 92%;
+        max-width: 380px;
+        border-radius: 24px;
+        overflow: hidden;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+      }
+  
+  .modal-content img {
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+    background: #fff;
+  }
+  
+      .modal-body {
+        padding: 20px;
+      }
+  
+      .modal-body h2 {
+        color: var(--rosa-principal);
+        font-size: 20px;
+        margin-bottom: 8px;
+      }
+  
+      .modal-body p {
+        color: #555;
+        font-size: 14.5px;
+        line-height: 1.5;
+      }
+  
+      .sabores {
+        margin-top: 18px;
+      }
+  
+      .sabores h4 {
+        margin-bottom: 10px;
+        color: #444;
+        font-size: 15px;
+      }
+  
+      .sabor-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: #fff0f5;
+        padding: 12px 14px;
+        border-radius: 14px;
+        margin-bottom: 8px;
+        font-size: 14px;
+      }
+  
+      .sabor-item button {
+        background: var(--rosa-principal);
+        color: white;
+        border: none;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        font-size: 18px;
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+  
+      .sabor-item button:hover {
+        background: #c51162;
+        transform: scale(1.1);
+      }
+  
+      .fechar-modal {
+        margin-top: 20px;
+        width: 100%;
+        padding: 14px;
+        background: #e91e63;
+        color: white;
+        border: none;
+        border-radius: 14px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+      }
+  
+  
+      #fab {
+        position: fixed;
+        bottom: 25px;
+        right: 25px;
+        z-index: 1000;
+      }
+      
+      
+  
+  
+      #carrinho {
+        width: 68px;
+        height: 68px;
+        background: linear-gradient(135deg, #e91e63, #ff4081);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 8px 25px rgba(233, 30, 99, 0.4);
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+  
+      #carrinho:hover {
+        transform: scale(1.08);
+      }
+  
+      #carrinho::after {
+        content: attr(data-qtd);
+        position: absolute;
+        top: -6px;
+        right: -6px;
+        background: #ff1744;
+        color: white;
+        font-size: 13px;
+        font-weight: bold;
+        min-width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      }
+      #listaCar {
+  
+    position: fixed;
+  
+    top: 0;
+    left: 0;
+  
+    width: 100%;
+    height: 100%;
+  
+    background: rgba(0,0,0,0.6);
+  
+    display: none;
+  
+    align-items: center;
+    justify-content: center;
+  
+    z-index: 10000;
+  
+    animation: fadeIn .25s ease;
+  }
+  
+  
+  .car-content {
+  
+    background: white;
+  
+    width: 92%;
+    max-width: 420px;
+  
+    border-radius: 24px;
+  
+    max-height: 85vh;
+  
+    overflow-y: auto;
+  
+    padding: 22px;
+  
+    animation: subirModal .25s ease;
+  
+  }
+  
+  
+  .item-car {
+  
+    display: flex;
+  
+    gap: 12px;
+  
+    align-items: center;
+  
+    padding: 14px 0;
+  
+    border-bottom: 1px solid #f1f1f1;
+  
+  }
+  
+  
+  .item-car img {
+  
+    width: 60px;
+  
+    height: 60px;
+  
+    object-fit: cover;
+  
+    border-radius: 14px;
+  
+  }
+  
+  
+  .item-info {
+  
+    flex: 1;
+  
+  }
+  
+  
+  .item-info div:first-child {
+  
+    font-weight: 600;
+  
+    font-size: 15px;
+  
+  }
+  
+  
+  .item-info div:last-child {
+  
+    font-size: 13px;
+  
+    color: #777;
+  
+  }
+  
+  
+  #resumoCar {
+  
+    margin: 22px 0;
+  
+    padding: 18px;
+  
+    background: #fff0f5;
+  
+    border-radius: 18px;
+  
+    font-weight: 600;
+  
+    text-align: center;
+  
+    font-size: 16px;
+  
+  }
+  
+  
+  #btnWhats {
+  
+    width: 100%;
+  
+    padding: 16px;
+  
+    background: #25D366;
+  
+    color: white;
+  
+    border: none;
+  
+    border-radius: 18px;
+  
+    font-size: 17px;
+  
+    font-weight: 700;
+  
+    margin-top: 10px;
+  
+    cursor: pointer;
+  
+    transition: .2s;
+  }
+  
+  
+  #btnWhats:hover {
+  
+    transform: scale(1.02);
+  
+  }
+  
+  
+  .grupo-botoes {
+  
+    display: flex;
+  
+    gap: 10px;
+  
+    margin-top: 10px;
+  
+  }
+  
+  
+  .grupo-botoes button {
+  
+    flex: 1;
+  
+    border: none;
+  
+    padding: 12px;
+  
+    border-radius: 14px;
+  
+    background: #f5f5f5;
+  
+    font-weight: 600;
+  
+    font-size: 14px;
+  
+    cursor: pointer;
+  
+    transition: .2s;
+  
+  }
+  
+  
+  .grupo-botoes button:hover {
+  
+    background: #ececec;
+  
+  }
+  
+  
+  .grupo-botoes button.ativo {
+  
+    background: #e91e63;
+  
+    color: white;
+  
+    transform: scale(1.03);
+  
+  }
+  
+  
+  
+  #trocoValor {
+  
+    width: 100%;
+  
+    padding: 10px;
+  
+    border-radius: 10px;
+  
+    border: 1px solid #ddd;
+  
+    margin-top: 6px;
+  
+  }
+  
+  
+  #campoLocalizacao input {
+  
+    width: 100%;
+  
+    padding: 12px;
+  
+    border-radius: 12px;
+  
+    border: 1px solid #ddd;
+  
+    font-size: 14px;
+  
+  }
+  
+  
+  #campoLocalizacao button {
+  
+    width: 100%;
+  
+    padding: 12px;
+  
+    border: none;
+  
+    border-radius: 12px;
+  
+    background: #f0f7ff;
+  
+    color: #1976d2;
+  
+    font-weight: 600;
+  
+    cursor: pointer;
+  
+  }
+  
+
+  
+  
+  
+  
+  @keyframes subirModal {
+  
+    from {
+  
+      transform: translateY(30px);
+  
+      opacity:0;
+  
+    }
+  
+    to {
+  
+      transform: translateY(0);
+  
+      opacity:1;
+  
+    }
+  
+  }
+      
+  
+      @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+  
+      .pulse {
+        animation: pulse 0.6s ease;
+      }
+  
+      @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.25); }
+        100% { transform: scale(1); }
+      }
+    </style>
+  </head>
+  <body>
+  
+    <header>
+      <img src="https://i.postimg.cc/zfcDGVhY/1b65b0be2-aed4-4e7a-8867-121e07441219.png" alt="Ana Ateliê">
+      <h1>Ana-Ateliê🌷</h1>
+    </header>
+  
+    <div id="categorias">
+      <div class="categoria" onclick="carregarProdutos(null)">
+        <img src="https://i.postimg.cc/HjzcZdP3/file-00000000a62c720e81565233090de5da.png" alt="todos">
+        <p>todos</p>
+        </div>
+        
+        <div class="categoria" onclick="carregarProdutos('maes')">
+        <img src="https://i.postimg.cc/23GbcrXJ/file-0000000000d471f5bf8687fd98c1d6df.png" alt="Maes">
+        <p>Mães</p>
+        </div>
+            <div class="categoria" onclick="carregarProdutos('pascoa')">
+        <img src="https://i.postimg.cc/pyChGR1S/file-00000000e4b0720eb1de64b8e8accfed.png" alt="pascoa">
+        <p>Páscoa</p>
+            </div>
+      </div>
+  
+    <div id="produtos"></div>
+  
+    <div id="modalInfo">
+      <div class="modal-content">
+        <img id="modalImg" src="" alt="">
+        <div class="modal-body">
+          <h2 id="modalNome"></h2>
+          <p id="modalDesc"></p>
+  
+          <div class="sabores">
+            <h4>Variações Disponíveis:</h4>
+            <div id="listaSabores"></div>
+          </div>
+  
+          <button class="fechar-modal" onclick="fecharModal()">Fechar</button>
+        </div>
+      </div>
+    </div>
+  
+    <div id="listaCar">
+      <div class="car-content">
+        <h2 style="text-align:center; margin-bottom:20px; color:#e91e63;">🛍️ Seu Pedido</h2>
+        
+        <div id="itensCar"></div>
+        
+        <div id="resumoCar"></div>
+  
+        <button id="btnWhats" onclick="enviarWhats()">
+          <i class="fab fa-whatsapp"></i> Pedir pelo WhatsApp
+        </button>
+        
+        <button onclick="fecharCarrinho()" style="width:100%; padding:14px; background:#eee; border:none; border-radius:14px; font-weight:600; cursor:pointer;">
+          Fechar
+        </button>
+      </div>
+    </div>
+  
+    <div id="fab">
+      <div id="carrinho" onclick="abrirCarrinho()">
+        <i class="fas fa-shopping-bag" style="font-size:28px; color:white;"></i>
+      </div>
+    </div>
+    
+    
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+  <script>
+  const SUPABASE_URL = "https://kmvbihhgjguesfngqsbm.supabase.co";
+  const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImttdmJpaGhnamd1ZXNmbmdxc2JtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY5ODMyMzAsImV4cCI6MjA5MjU1OTIzMH0.WZXVkObmrRrIn76UwTpqCO0D2nPR2Ke3OFvVs_zFiWk";
+  
+  const supabaseC = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_ANON_KEY
+  );
+    
+  let listaProdutos = [];
+  let carrinho = [];
+  
+  
+  async function carregarProdutos(categoria = null) {
+    const container = document.getElementById("produtos");
+  
+    if (!container) {
+      console.error("❌ #produtos não encontrado no HTML");
+      return;
+    }
+  
+    try {
+      container.innerHTML = `
+        <p style="text-align:center;padding:40px;">
+          Carregando produtos...
+        </p>
+      `;
+  
+      let query = supabaseC
+        .from("produtos")
+        .select("*")
+        .order("id", { ascending: false });
+  
+      if (categoria) {
+        query = query.eq("categoria", categoria);
+      }
+  
+      const { data, error } = await query;
+  
+      if (error) {
+        console.error("Erro Supabase:", error);
+        throw error;
+      }
+  
+      listaProdutos = data || [];
+  
+      container.innerHTML = "";
+  
+      if (!listaProdutos.length) {
+        container.innerHTML = `
+          <p style="text-align:center;padding:40px;">
+            Nenhum produto encontrado.
+          </p>
+        `;
+        return;
+      }
+  
+      const fragment = document.createDocumentFragment();
+  
+      listaProdutos.forEach((prod, i) => {
+        const nome = prod.nome || "Sem nome";
+        const desc = prod.descricao || "";
+        const preco = parseFloat(prod.preco || 0).toFixed(2);
+        const img = prod.img || "https://via.placeholder.com/300";
+        const estoque = Number(prod.estoque || 0);
+  
+        const div = document.createElement("div");
+        div.className = "produto";
+  
+        if (estoque > 0) {
+          div.onclick = () => abrirModal(i);
+        } else {
+          div.style.opacity = "0.5";
+        }
+  
+        let estoqueHTML = "";
+  
+        if (estoque > 0 && estoque <= 3) {
+          estoqueHTML = `<span style="color:orange;font-size:12px;">⚠️ Últimas ${estoque}</span>`;
+        } else if (estoque > 0) {
+          estoqueHTML = `<span style="color:green;font-size:12px;">🟢 ${estoque} disponível</span>`;
+        } else {
+          estoqueHTML = `<span style="color:red;font-size:12px;">🔴 Esgotado</span>`;
+        }
+  
+        div.innerHTML = `
+          <img src="${img}" alt="${nome}">
+          <div class="produto-info">
+            <h5>${nome}</h5>
+            <h6>${desc}</h6>
+            ${estoqueHTML}
+            <h3>R$ ${preco}</h3>
+          </div>
+        `;
+  
+        fragment.appendChild(div);
+      });
+  
+      container.appendChild(fragment);
+  
+    } catch (erro) {
+      container.innerHTML = `
+        <p style="text-align:center;color:#e91e63;padding:40px;">
+          ⚠️ Erro ao carregar produtos.
+        </p>
+      `;
+    }
+  }
+  
+  function abrirModal(index) {
+    const prod = listaProdutos[index];
+  
+    if (!prod) return;
+  
+    document.getElementById("modalImg").src = prod.img || "";
+    document.getElementById("modalNome").textContent = prod.nome || "";
+    document.getElementById("modalDesc").textContent = prod.descricao || "";
+  
+    const container = document.getElementById("listaSabores");
+    container.innerHTML = "";
+  
+    let variacoes = prod.variacoes || prod.sabores || [];
+  
+    if (typeof variacoes === "string") {
+      variacoes = variacoes.split(",").map(v => v.trim());
+    }
+  
+  if (variacoes.length > 0) {
+    
+    variacoes.forEach(v => {
+      
+      const div = document.createElement("div");
+      div.className = "sabor-item";
+      
+      const span = document.createElement("span");
+      span.textContent = v;
+      
+      const btn = document.createElement("button");
+      btn.textContent = "+";
+      
+      btn.onclick = (e) => {
+        e.stopPropagation();
+        
+        const personalizacao =
+          document.getElementById("inputPersonalizacao")?.value || "";
+        
+        addAoCarrinho(index, v, btn, personalizacao);
+      };
+      
+      div.appendChild(span);
+      div.appendChild(btn);
+      
+      container.appendChild(div);
+    });
+    
+  } else {
+    
+    const div = document.createElement("div");
+    div.className = "sabor-item";
+    
+    const span = document.createElement("span");
+    span.textContent = "Peça padrão";
+    
+    const btn = document.createElement("button");
+    btn.textContent = "+";
+    
+    btn.onclick = (e) => {
+      e.stopPropagation();
+      
+      const personalizacao =
+        document.getElementById("inputPersonalizacao")?.value || "";
+      
+      addAoCarrinho(index, "Padrão", btn, personalizacao);
+    };
+    
+    div.appendChild(span);
+    div.appendChild(btn);
+    
+    container.appendChild(div);
+  }
+  
+    const box = document.createElement("div");
+    box.style.marginTop = "15px";
+  
+    box.innerHTML = `
+      <label style="font-size:14px;font-weight:600;">
+        ✍️ Personalização (opcional)
+      </label>
+      <input 
+        type="text" 
+        id="inputPersonalizacao"
+        placeholder="Ex: Nome, cor, frase..."
+        style="width:100%;padding:10px;border-radius:10px;border:1px solid #ddd;margin-top:5px;"
+      >
+    `;
+  
+    container.appendChild(box);
+  
+    document.getElementById("modalInfo").style.display = "flex";
+  }
+  
+  
+  function fecharModal() {
+    document.getElementById("modalInfo").style.display = "none";
+  }
+  
+  
+  function addAoCarrinho(index, variacao, btn, personalizacao = "") {
+    const prod = listaProdutos[index];
+    if (!prod) return;
+  
+    const carrinhoIcon = document.getElementById("carrinho");
+    const imgOrigem = document.getElementById("modalImg");
+  
+    if (btn) btn.disabled = true;
+  
+    const preco = typeof prod.preco === "number"
+      ? prod.preco
+      : parseFloat(String(prod.preco || 0).replace(",", "."));
+  
+    const variacaoSelecionada = variacao || "Padrão";
+    const personal = personalizacao?.trim() || "";
+  
+    // 🔥 Controle de estoque
+    if (prod.estoque !== undefined && prod.estoque !== null) {
+      if (prod.estoque <= 0) {
+        alert("Produto esgotado!");
+        if (btn) btn.disabled = false;
+        return;
+      }
+  
+      prod.estoque--;
+    }
+  
+    const item = {
+      nome: prod.nome,
+      variacao: variacaoSelecionada,
+      preco: preco,
+      img: prod.img,
+      personalizacao: personal
+    };
+  
+    // 🔥 fallback sem animação
+    if (!imgOrigem || !carrinhoIcon) {
+      carrinho.push(item);
+      atualizarCarrinho();
+      fecharModal();
+      return;
+    }
+  
+    // 🔥 animação
+    const imgClone = imgOrigem.cloneNode(true);
+    const rectStart = imgOrigem.getBoundingClientRect();
+    const rectEnd = carrinhoIcon.getBoundingClientRect();
+  
+    Object.assign(imgClone.style, {
+      position: "fixed",
+      top: rectStart.top + "px",
+      left: rectStart.left + "px",
+      width: rectStart.width + "px",
+      height: rectStart.height + "px",
+      borderRadius: "18px",
+      zIndex: "99999",
+      transition: "all 0.6s cubic-bezier(0.4, 0, 0.2, 1)",
+      pointerEvents: "none"
+    });
+  
+    document.body.appendChild(imgClone);
+  
+    requestAnimationFrame(() => {
+      Object.assign(imgClone.style, {
+        top: (rectEnd.top + 10) + "px",
+        left: (rectEnd.left + 10) + "px",
+        width: "40px",
+        height: "40px",
+        opacity: "0.6",
+        borderRadius: "50%"
+      });
+    });
+  
+    setTimeout(() => {
+      imgClone.remove();
+  
+      carrinho.push(item);
+      atualizarCarrinho();
+  
+      if (btn) {
+        btn.disabled = false;
+        btn.textContent = "✓";
+        setTimeout(() => (btn.textContent = "+"), 800);
+      }
+  
+    }, 600);
+  
+    fecharModal();
+  }
+  
+  
+  function atualizarCarrinho() {
+    const icon = document.getElementById("carrinho");
+    icon.setAttribute("data-qtd", carrinho.length);
+    
+    icon.classList.add("pulse");
+    setTimeout(() => icon.classList.remove("pulse"), 600);
+  }
+  
+  
+  function abrirCarrinho() {
+    
+    const container = document.getElementById("itensCar");
+    const resumo = document.getElementById("resumoCar");
+    
+    if (!container || !resumo) return;
+    
+    container.innerHTML = "";
+    
+    let total = 0;
+  
+    if (carrinho.length === 0) {
+      container.innerHTML = `
+        <p style="text-align:center;padding:30px;color:#777;">
+          🧺 Seu carrinho está vazio
+        </p>
+      `;
+      resumo.innerHTML = "";
+      document.getElementById("listaCar").style.display = "flex";
+      return;
+    }
+    
+    carrinho.forEach((item, index) => {
+      
+      const preco = typeof item.preco === "number" ?
+        item.preco :
+        parseFloat(String(item.preco || 0).replace(",", "."));
+      
+      total += preco;
+      
+      const div = document.createElement("div");
+      div.className = "item-car";
+      
+      div.innerHTML = `
+        <img src="${item.img || "https://via.placeholder.com/100"}" alt="${item.nome}">
+        
+        <div class="item-info">
+          <div style="font-weight:600;">${item.nome}</div>
+  
+          <div style="font-size:12px;color:#777;">
+            ${item.variacao ? "🎨 " + item.variacao : ""}
+          </div>
+  
+          <div style="font-size:12px;color:#555;">
+            ${item.personalizacao ? "📝 " + item.personalizacao : ""}
+          </div>
+        </div>
+  
+        <div style="font-weight:600; color:#e91e63;">
+          R$ ${preco.toFixed(2)}
+        </div>
+  
+        <button 
+          onclick="removerItem(${index}); event.stopPropagation()"
+          style="background:none;border:none;font-size:20px;cursor:pointer;">
+          ×
+        </button>
+      `;
+      
+      container.appendChild(div);
+    });
+    
+    resumo.innerHTML = `
+  
+      <strong>Itens:</strong> ${carrinho.length}<br>
+      <strong>Total:</strong> R$ ${total.toFixed(2)}
+  
+      <br><br>
+  
+      <strong>Entrega ou retirada:</strong><br>
+  
+      <div class="grupo-botoes">
+        <button onclick="selecionarEntrega('retirada')" id="btnRetirada">
+          🏪 Retirada
+        </button>
+  
+        <button onclick="selecionarEntrega('entrega')" id="btnEntrega">
+          🚚 Entrega
+        </button>
+      </div>
+  
+      <div id="campoLocalizacao" style="display:none;margin-top:10px;">
+        <input 
+          type="text" 
+          id="enderecoCliente" 
+          placeholder="Digite seu endereço..."
+        >
+      </div>
+  
+      <br>
+  
+      <strong>Forma de pagamento:</strong><br>
+  
+      <div class="grupo-botoes">
+  
+        <button onclick="selecionarPagamento('pix')" id="btnPix">
+          Pix
+        </button>
+  
+        <button onclick="selecionarPagamento('cartao')" id="btnCartao">
+          Cartão
+        </button>
+  
+        <button onclick="selecionarPagamento('dinheiro')" id="btnDinheiro">
+          Dinheiro
+        </button>
+  
+      </div>
+  
+      <div id="campoTroco" style="display:none;margin-top:10px;">
+        Precisa de troco para quanto?<br>
+        <input type="text" id="trocoValor">
+      </div>
+  
+    `;
+    
+    document.getElementById("listaCar").style.display = "flex";
+  }
+  
+  let tipoEntrega = "";
+  let formaPagamento = "";
+  
+  function selecionarEntrega(tipo) {
+    
+    tipoEntrega = tipo;
+    
+    const btnRetirada = document.getElementById("btnRetirada");
+    const btnEntrega = document.getElementById("btnEntrega");
+    const campoEndereco = document.getElementById("campoLocalizacao");
+    
+    if (btnRetirada) btnRetirada.classList.remove("ativo");
+    if (btnEntrega) btnEntrega.classList.remove("ativo");
+    
+    if (tipo === "retirada") {
+      btnRetirada.classList.add("ativo");
+      campoEndereco.style.display = "none";
+    } else {
+      btnEntrega.classList.add("ativo");
+      campoEndereco.style.display = "block";
+    }
+  }
+  
+  
+  function selecionarPagamento(tipo) {
+    
+    formaPagamento = tipo;
+    
+    const btnPix = document.getElementById("btnPix");
+    const btnCartao = document.getElementById("btnCartao");
+    const btnDinheiro = document.getElementById("btnDinheiro");
+    const campoTroco = document.getElementById("campoTroco");
+    
+    if (btnPix) btnPix.classList.remove("ativo");
+    if (btnCartao) btnCartao.classList.remove("ativo");
+    if (btnDinheiro) btnDinheiro.classList.remove("ativo");
+    
+    if (tipo === "pix") {
+      btnPix.classList.add("ativo");
+    } else if (tipo === "cartao") {
+      btnCartao.classList.add("ativo");
+    } else {
+      btnDinheiro.classList.add("ativo");
+    }
+    if (campoTroco) {
+      campoTroco.style.display = tipo === "dinheiro" ? "block" : "none";
+    }
+  }
+  
+  
+  function fecharCarrinho() {
+    document.getElementById("listaCar").style.display = "none";
+  }
+  
+  function removerItem(index) {
+    carrinho.splice(index, 1);
+    abrirCarrinho();     
+    atualizarCarrinho(); 
+  }
+  function enviarWhats() {
+    
+    if (carrinho.length === 0) {
+      alert("Seu carrinho está vazio.");
+      return;
+    }
+    
+    if (!tipoEntrega) {
+      alert("Escolha retirada ou entrega.");
+      return;
+    }
+    
+    if (!formaPagamento) {
+      alert("Escolha a forma de pagamento.");
+      return;
+    }
+    
+    const troco = document.getElementById("trocoValor")?.value || "";
+    const endereco = document.getElementById("enderecoCliente")?.value || "";
+    
+    if (tipoEntrega === "entrega" && !endereco.trim()) {
+      alert("Digite o endereço para entrega.");
+      return;
+    }
+    
+    const total = carrinho.reduce((acc, item) => {
+      const preco = typeof item.preco === "number" ?
+        item.preco :
+        parseFloat(String(item.preco).replace(",", "."));
+      return acc + preco;
+    }, 0);
+    
+    let msg = `🧵 *ANA ATELIÊ*\n`;
+    msg += `━━━━━━━━━━━━━━━\n`;
+    msg += `✨ *Novo Pedido Recebido*\n\n`;
+    
+    carrinho.forEach((item, i) => {
+      
+      const preco = typeof item.preco === "number" ?
+        item.preco :
+        parseFloat(String(item.preco).replace(",", "."));
+      
+      msg += `🛍️ *Item ${i + 1}*\n`;
+      msg += `• ${item.nome}\n`;
+      
+if (item.variacao) {
+  msg += `• Variação: ${item.variacao}\n`;
+}
+      
+      msg += `• Valor: R$ ${preco.toFixed(2)}\n\n`;
+    });
+    
+    msg += `━━━━━━━━━━━━━━━\n`;
+    msg += `📋 *Resumo do Pedido*\n\n`;
+    
+    msg += `📦 Tipo: ${
+      tipoEntrega === "entrega" ? "Entrega" : "Retirada"
+    }\n`;
+    
+    msg += `💳 Pagamento: ${
+      formaPagamento === "pix"
+        ? "Pix"
+        : formaPagamento === "cartao"
+        ? "Cartão"
+        : "Dinheiro"
+    }\n`;
+    
+    if (formaPagamento === "dinheiro" && troco) {
+      msg += `💵 Troco para: R$ ${troco}\n`;
+    }
+    
+    if (tipoEntrega === "entrega") {
+      msg += `\n📍 *Endereço para entrega:*\n${endereco}\n`;
+    }
+    
+    msg += `\n📅 *Informe o melhor dia e horário para entrega*\n`;
+    
+    msg += `━━━━━━━━━━━━━━━\n`;
+    msg += `💰 *Total: R$ ${total.toFixed(2)}*\n\n`;
+    
+    msg += `💛 Obrigado por escolher o *Ana Ateliê!*`;
+    
+    const numero = "5583989022424";
+    
+    const url = `https://wa.me/${numero}?text=${encodeURIComponent(msg)}`;
+    
+    window.open(url, "_blank");
+  }
+  
+  document.getElementById("modalInfo").addEventListener("click", function(e) {
+    if (e.target === this) fecharModal();
+  });
+  
+  window.onload = () => {
+    carregarProdutos(); 
+  };
+  </script>
+  
+  </body>
+  </html>
